@@ -1,0 +1,47 @@
+1) Reference cannot be void/NULL. Pointers can be NULL.
+2) Reference cannot refer to a different location other than the one it is initialized.
+3) Reference needs to be initialized at the time of declaration.
+
+-- Advantage of reference --
+1) Since initializtion is must, wild reference do not exist.
+2) Do not need dereferenc to access the value.
+
+
+-- Reference --
+Reference ones assigned cannot change the object they are referring to.
+int& ref = a;
+int& ref2 = b;
+ref = b;    // This will change the value of a and ref. It will not make ref point to b
+ref = ref2; // Same
+
+-- Const Reference --
+const int& ref = a;
+ref = 3;  // CTE
+a = 18;   // This is OK
+
+-- CTE --
+int& const z = a; 	// CTE - reference cannot have such a const
+int& ref; 			// CTE. Reference should be assigned at the time of declaration.
+
+-- Temporary objects --
+int& ref = 3; 		// CTE
+const int& ref = 3;
+// No CTE. Temporary objects are destroyed on the same line. 
+// But because of ref the lifetime of 3 is increased.
+
+const int a = 34;
+int& ref = a; // CTE
+
+int a = 23;
+int& ref1 = a;
+int& ref2 = ref1;
+Here ref2 is not a reference to reference, since ref1 boils down to a.
+
+-- Dangling reference --
+When the object a reference is pointing to is destroyed before the reference,
+it is called as dangling reference. Leads to undefined behavior.
+
+-- r-value reference --
+Use && for r value reference
+r-value reference increases the lifespan of temporary objects.
+Can be const or non-const
