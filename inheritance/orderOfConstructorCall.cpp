@@ -1,5 +1,5 @@
 // Destructor call is exactly opposite to Constructor call.
-// First Base constructor is called and derived constructor is called. 
+// First Base constructor is called and then derived constructor is called. 
 
 #include <iostream>
 
