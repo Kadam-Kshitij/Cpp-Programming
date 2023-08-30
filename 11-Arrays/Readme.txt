@@ -71,3 +71,6 @@ If the constexpr conditional evaluates to true, the entire if-else will be repla
 
 if constexpr (gravity == 9.8)
 
+switch fallthrough
+Variable declaration and initialization inside case statements
+goto
