@@ -62,3 +62,12 @@ The null character is automatically added by the compiler. Hence the length is a
 
 3-----
 plog
+
+Dangling else
+==
+C++17 introduces the constexpr if statement, which requires the conditional to be a constant expression
+
+If the constexpr conditional evaluates to true, the entire if-else will be replaced by the true-statement. If the constexpr conditional evaluates to false, the entire if-else will be replaced by the false-statement (if it exists) or nothing (if there is no else).
+
+if constexpr (gravity == 9.8)
+
