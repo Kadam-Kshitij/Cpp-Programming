@@ -53,3 +53,8 @@ We can increase/decrease stack size using
 ulimit -s <size>
 ulimit -s unlimited		// Unlimited stack
 ulimit -a 				// Display all resources
+
+
+----- 12.3 — std::vector capacity and stack behavior -----
+For vectors, length is the number of elements in the vector.
+Capacity is, how many elements are allocated in the memory.
