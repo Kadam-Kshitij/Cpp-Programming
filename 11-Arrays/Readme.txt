@@ -47,3 +47,18 @@ When passing arr to function, it boils down to a pointer.
 
 We can use std::size( arr ) to get the array length.
 std::size cannot be used on array which has been passed from other function. Cause CTE.
+
+
+
+
+
+A C-style string is simply an array of characters that uses a null terminator
+
+To define a c-style string use the following syntax
+char str[]{ "Abc" };
+The null character is automatically added by the compiler. Hence the length is actual string length + 1.
+
+
+
+3-----
+plog
