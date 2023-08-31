@@ -1,3 +1,34 @@
+----- 9.5 — Pass by lvalue reference -----
+Pass by reference is used to avoid expensive copy operations.
+void foo( int& x )
+Here we can pass only non-const lvalues.
+
+
+----- 9.6 — Pass by const lvalue reference -----
+void foo( const int& x )
+Here we can pass const lvalues, non-const lvalues, rvalues.
+The passed argument cannot be modified in the function.
+
+1) Copying class objects is expensive. Copying fundamental data types is cheap.
+2) Accessing via reference is expensive than accessing variable directly.
+So heavy objects should be passed by reference. Fundamental data types can be passed by value.
+
+
+----- 9.7 — Introduction to pointers -----
+int* ptr1, ptr2 // Here ptr2 will be of type int
+int* ptr1, * ptr2 // Here both are pointers
+
+Pointer of one type cannot point to variable of other data type.
+
+Difference between pointers and references
+1) Reference needs to be initialized. Pointers are not needed to be initialized.
+2) Pointer can be changed to point somewhere else. References cannot.
+
+Size of pointers depends on architecture of the machine.
+On 32 bit machine it is 4 bytes, on 64 bit machine it is 8 bytes.
+
+
+
 ----- 9.9 — Pointers and const -----
 int* ptr = &x;
 Normal pointers can point to different location
@@ -15,4 +46,5 @@ Here we can change value of variable pointed by ptr, but not where ptr is pointi
 
 const int* const ptr = &x;
 Here we can neither change where ptr is pointing, nor value pointed by it.
+
 
