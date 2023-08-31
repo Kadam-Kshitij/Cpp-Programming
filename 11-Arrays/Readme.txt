@@ -49,6 +49,26 @@ We can use std::size( arr ) to get the array length.
 std::size cannot be used on array which has been passed from other function. Cause CTE.
 
 
+----- 11.4 — Sorting an array using selection sort -----
+std::sort( std::begin( arr ), std::end( arr ) );
+Where std::begin and std::end returns iterator to the start and end of the range.
+
+
+----- 11.5 — Multidimensional Arrays -----
+int arr[3][4] = {{1,2},{3,4,5},{6,7,8,9}};
+Here remaining elements are initialized to zero.
+// 1, 2, 0, 0, 
+// 3, 4, 5, 0, 
+// 6, 7, 8, 9,
+We can also omit the row number while creating the array.
+int arr[2][4][6]{}; // Use for loops to initialize the array.
+
+
+----- 11.7 — Pointers and arrays -----
+
+
+----- 11.9 — C-style string symbolic constants -----
+
 
 
 
@@ -57,6 +77,9 @@ A C-style string is simply an array of characters that uses a null terminator
 To define a c-style string use the following syntax
 char str[]{ "Abc" };
 The null character is automatically added by the compiler. Hence the length is actual string length + 1.
+
+
+
 
 
 
