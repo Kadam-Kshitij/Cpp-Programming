@@ -27,6 +27,7 @@ Difference between pointers and references
 Size of pointers depends on architecture of the machine.
 On 32 bit machine it is 4 bytes, on 64 bit machine it is 8 bytes.
 
+Dangling pointers are pointer pointing to address which no longer exist.
 
 
 ----- 9.9 — Pointers and const -----

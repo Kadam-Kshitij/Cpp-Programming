@@ -58,3 +58,9 @@ ulimit -a 				// Display all resources
 ----- 12.3 — std::vector capacity and stack behavior -----
 For vectors, length is the number of elements in the vector.
 Capacity is, how many elements are allocated in the memory.
+
+
+----- 12.7 — Introduction to lambdas -----
+Lambdas are anonymous functions inside another function.
+Syntax -
+[capture clause]( parameters )->returnType{ statements; };
