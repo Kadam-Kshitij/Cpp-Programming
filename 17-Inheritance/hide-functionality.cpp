@@ -8,6 +8,12 @@ protected:
 	int y{ 34 };
 private:
 	int z{ 12 };
+
+public:
+	void foo()
+	{
+		std::cout << "Foo\n";
+	}
 };
 
 class Derived : public Base
@@ -18,6 +24,7 @@ public:
 
 private:
 	using Base::x;
+	using Base::foo;
 };
 
 int main()
@@ -32,4 +39,13 @@ int main()
 	// std::cout << "x = " << d.x << std::endl;
 	// However we can still static_cast to Base& and access x
 	std::cout << "x = " << static_cast< Base& >( d ).x << std::endl;
+
+	// d.foo();
+	static_cast< Base& >( d ).foo();
 }
+
+// Output
+
+// y = 34
+// x = 56
+// Foo

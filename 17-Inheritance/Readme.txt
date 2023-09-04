@@ -30,14 +30,15 @@ static_cast< Base >( obj );
 
 
 ----- 17.8 — Hiding inherited functionality -----
-We can change the access specifier of Base class function in derived class 
+We can change the access specifier of Base class members in derived class 
 public:
-	using Base::foo();
+	using Base::val; 	// Variable
+	using Base::foo;	// Function
 We cannot change access of private members of Base class in derived class,
 because they cannot be accessed by Derived class.
-But we can make a public member in Base as private in Derived.
-This way it cannot be accessed from outside.
-But we can still cast to Base& and access the member, since it is public in Base.
+We can change access of public/protected members of Base class in Derived class.
+We can still cast derived object to Base& using static_cast and access the member
+which are made private in Derived class.
 
 We can also delete a function in derived class so that it cannot be called 
 int foo() = delete;
