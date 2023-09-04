@@ -58,3 +58,6 @@ obj.Base1::foo();
 The resolution string will become complex as the levels of inheritance will increase
 
 Another problem with multiple inheritance is diamond problem.
+In this A <- B, A <- C, B <- D, B <- D.
+Now when we create object of class D, the class A is constructed twice.
+Solution is provided in Section 18.8

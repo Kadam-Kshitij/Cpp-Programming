@@ -68,15 +68,64 @@ Another way is using virtual functions.
 
 
 ----- 18.6 — The virtual table -----
- The virtual table is a lookup table of functions used to resolve function calls
- in a dynamic/late binding manner.
- Every class which has a virtual function, has its own vtable.
- A virtual table contains one entry for each virtual function that can be called by
- objects of the class. Each entry in this table is simply a function pointer that
- points to the most-derived function accessible by that class.
- 
- The compiler also adds a hidden pointer that is a member of the base class,
- which we will call *__vptr
- This causes the class size to increase by size of one pointer.
+The virtual table is a lookup table of functions used to resolve function calls
+in a dynamic/late binding manner.
+Every class which has a virtual function, has its own vtable.
+A virtual table contains one entry for each virtual function that can be called by
+objects of the class. Each entry in this table is simply a function pointer that
+points to the most-derived function accessible by that class.
 
- When object is created, the pointer is set to point to the vtable of that class.
+The compiler also adds a hidden pointer that is a member of the base class,
+which we will call *__vptr
+This causes the class size to increase by size of one pointer.
+
+When object is created, the pointer is set to point to the vtable of that class.
+
+Derived obj; // vptr points to Derived vtable
+Base* ptr = &obj; // vptr still points to Derived vtable
+
+Base obj; // Here vptr points to Base vtable
+
+https://www.learncpp.com/cpp-tutorial/the-virtual-table/
+
+
+----- 18.7 — Pure virtual functions, abstract and interface classes -----
+Pure virtual functions can be created as follows
+virtual void foo() const = 0;
+They have no body, only declaration.
+
+Class having one or more pure virtual function is called abstract class.
+Such classes cannot be instantiated.
+
+If Derived class does not implement the pure virtual function, then
+the derived class remains abstract and cannot be instantiated.
+
+Still it is possible to create pure virtual function with body.
+We need to provide the function body seperately and not inline. While declaring
+the function we need to make it =0;
+We can then call the function from Derived class using scope resolution operator
+Base::foo();
+Base class still cannot be instantiated.
+
+Interface class is a class which has all its member functions as pure virtual
+and no member variables.
+
+
+----- 18.8 — Virtual base classes -----
+To solve the diamond problem, we can use virtual base class.
+Simply insert the “virtual” keyword in the inheritance list of the derived class.
+Base object is shared between all objects in inheritance tree & is constructed once.
+
+A <- B, A <- C, B <- D, B <- D.
+Class A gets constructed twice.
+
+To resolve this inherit class B and class C virtually.
+class B : virtual public A
+class C : virtual public A
+
+Class D is responsible to create Class A.
+Class C and B still have calls to constructor of Class A. Bt these get used only
+when we create objects of Class C and Class B. They are ignored while creting Class D
+
+
+----- 18.9 — Object slicing -----
