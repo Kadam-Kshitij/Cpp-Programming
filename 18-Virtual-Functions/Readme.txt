@@ -129,3 +129,29 @@ when we create objects of Class C and Class B. They are ignored while creting Cl
 
 
 ----- 18.9 — Object slicing -----
+If we assign a Derived class object to a Base object, only the Base portion is
+copied. The Derived portion gets sliced off.
+Base obj = obj_d;
+
+FrankenObject
+Derived d1;
+Derived d2;
+Base& b{ d1 };
+b = d2;
+Here only Base portion of d2 gets copied into d1.
+
+
+----- 18.10 — Dynamic casting -----
+Dynamic cast is used to downcast Base pointer or reference to Derived pointer
+or reference.
+If casting fails in case of pointers, a NULL pointer is returned.
+If casting fails in case of references, a bad_cast exception is returned.
+
+Dynamic cast can fail in case, we try to downcast a Base pointer which actually
+points to a Base class object. Or if we try to downcast to wrong Derived class.
+
+Atleast one virtual function is needed to use dynamic_cast.
+Also cannot be used with private or protected inheritance.
+
+static_cast will work in downcasting, but may cause wrong results.
+It can downcast a Base* which actually is a pointer to Base object.
